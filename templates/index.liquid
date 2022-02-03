@@ -1,0 +1,127 @@
+<div class="index-section--flush powr-popup" id="016a7ed7_1535737760"></div>
+<!-- /templates/index.liquid -->
+<div class=""></div>
+
+{% comment %} Define your section markup, using
+`section.settings.[setting_name]` to access specific settings. * Sections do not
+have access to global liquid variables. {% endcomment %}
+<style>
+  .homepage-button {
+    border: 1px #e90000 solid;
+    border-radius: 60px;
+    color: #e90000;
+    background: none;
+    opacity: 1;
+  }
+
+  .homepage-button:hover {
+    background: #e90000;
+    color: white;
+    opacity: 1;
+  }
+  .grow {
+    transition: all 0.2s ease-in-out;
+  }
+  .grow:hover {
+    transform: scale(1.1);
+  }
+  .homepage-link,
+  .homepage-link:hover,
+  a,
+  a:hover {
+    opacity: 1 !important;
+  }
+
+  @media screen and (max-width: 60em) {
+    .homepage-button {
+      border: none;
+      color: white;
+      background: #e90000;
+      opacity: 1;
+    }
+  }
+</style>
+{% assign slider_enabled = true %} {% assign collection_count = 0 %}
+<div class="mt5 mt0-l">
+  {% for collection in collections %} {% unless collection.handle == 'frontpage'
+  %} {% assign collection_count = collection_count | plus:1 %} {% endunless %}
+  {% if collection.image %}
+  <div class="flex flex-column justify-center items-center vh-75 vh-100-l mb2">
+    <a
+      class="mt4 homepage-link db w-33-l w-75-m w-100"
+      href="/collections/{{ collection.handle }}"
+    >
+      <img
+        class="w-100 grow"
+        src="{{ collection.image | img_url: 'master' }} "
+      />
+    </a>
+    <p
+      style="
+        margin-bottom: 1.5rem;
+        margin-top: -1rem;
+        text-shadow: 1px 1px 1px #000;
+      "
+      class="f3 white sans-serif fw7 ma0"
+    >
+      {{ collection.title | upcase }}
+    </p>
+    <a
+      href="/collections/{{ collection.handle }}"
+      class="homepage-button pv2 ph5 f3 mw5-l w-40-m w-60"
+    >
+      <p class="ma0 tc fw6 f3">SHOP</p>
+    </a>
+  </div>
+
+  {% endif %} {% endfor %}
+</div>
+<div class="white">
+  {{ content_for_index }}
+</div>
+{% comment %}
+<div class="hero-wrapper">
+  {% endcomment %} {% comment %}
+  <div class="hero__site-header">
+    <div class="grid grid--no-gutter grid--table site-header__inner">
+      <div class="grid__item one-half">
+        <button
+          type="button"
+          class="site-header__link text-link site-header__toggle-nav js-drawer-open-left"
+        >
+          <span class="icon icon-hamburger" aria-hidden="true"></span>
+          <span class="icon__fallback-text">{{
+            'layout.navigation.menu' | t
+          }}</span>
+        </button>
+      </div>
+      <div class="grid__item one-half text-right">
+        <a
+          href="/search"
+          class="site-header__link site-header__search js-drawer-open-top"
+        >
+          <span class="icon icon-search" aria-hidden="true"></span>
+          <span class="icon__fallback-text">{{
+            'layout.navigation.search' | t
+          }}</span>
+        </a>
+        <a
+          href="/cart"
+          class="site-header__link site-header__cart cart-link{% if settings.cart_type == 'drawer' %} js-drawer-open-right{% endif %}{% if cart.item_count > 0 %} cart-bubble--visible{% endif %}"
+        >
+          <span class="icon icon-cart" aria-hidden="true"></span>
+          <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endcomment %} {% comment %} {% section 'slideshow' %}
+
+  <div class="hero__header">
+    <div class="action-area">
+      {% include 'action-bar' %}
+    </div>
+  </div>
+  {% endcomment %} {% comment %}
+</div>
+{% endcomment %}

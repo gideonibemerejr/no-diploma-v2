@@ -1,0 +1,91 @@
+{%- assign new_comment = false -%} {% if comment and comment.created_at %} {%-
+assign new_comment = true -%} {%- assign new_comment_id = comment.id -%} {%
+endif %} {% if new_comment %} {%- assign duplicate_comment = false %} {% for
+comment in article.comments %} {% if comment.id == new_comment_id %} {%- assign
+duplicate_comment = true %} {% break %} {% endif %} {% endfor %} {% if
+duplicate_comment %} {%- assign number_of_comments = article.comments_count -%}
+{% else %} {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+{% endif %} {% else %} {%- assign number_of_comments = article.comments_count
+-%} {% endif %} {% stylesheet 'scss' %} .list--inline__separator { &:before {
+display: none; } } {% endstylesheet %}
+
+<style>
+  @media only screen and (max-width: 749px) {
+    .rte--indented-images img:not([style]) {
+      max-width: 100%;
+      margin-left: 0;
+    }
+  }
+  .no-diploma-article img {
+    align-self: center;
+    width: 100%;
+    height: auto;
+  }
+  .newone-container {
+    background-color: #c8c6c8;
+  }
+  .newone-container img {
+    width: 100%;
+  }
+</style>
+
+{% if blog.title != 'newone' %}
+<div
+  class="flex flex-column mh3 mt6 tc items-center"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  <header class="section-header">
+    <h1 class="h2 red sans-serif">{{ article.title }}</h1>
+    <ul class="list--inline article-meta txt--minor list">
+      <li class="list--inline__separator list pa0 ma0 f4 sans-serif">
+        <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{
+          article.published_at | date: format:'month_day_year'
+        }}</time>
+      </li>
+    </ul>
+  </header>
+
+  <article
+    class="no-diploma-article flex flex-column w-100 w-75-l sans-serif"
+    itemprop="articleBody"
+  >
+    {% if article.image and blog.title == 'Podcast' %}
+
+    {{ article | img_url: 'master' | img_tag: article.title }}
+
+    {% endif %}
+
+    {{ article.content }}
+  </article>
+
+  {% if section.settings.social_sharing_blog %}
+  <hr class="hr--clear" />
+  <h3 class="h2 sans-serif">
+    Share this {% if blog.title == 'Podcast' %} Class Discussion {% elsif
+    blog.title == 'Yearbook' %} page from the yearbook {% endif %}
+  </h3>
+  {% include 'social-sharing', share_title: article.title, share_permalink:
+  article.url, share_image: article.image %} {% endif %}
+
+  <hr class="hr--clear" />
+  <p class="text-center action-link sans-serif">
+    <a href="{{ blog.url }}"
+      ><span
+        class="icon icon-arrow-left action-link__icon"
+        aria-hidden="true"
+      ></span>
+      {{ 'blogs.article.back_to_blog' | t: title:blog.title }}</a
+    >
+  </p>
+</div>
+
+{% elsif blog.title == 'newone' %}
+<div
+  class="pt5 newone-container w-100 flex flex-column justify-center items-center"
+>
+  {{ article.content }}
+</div>
+{% endif %} {% schema %} { "name": "Article", "settings": [ { "type":
+"checkbox", "id": "social_sharing_blog", "label": "Show social sharing buttons",
+"default": true } ] } {% endschema %}

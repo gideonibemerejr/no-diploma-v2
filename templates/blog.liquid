@@ -1,0 +1,95 @@
+<!-- /templates/blog.liquid -->
+
+<style>
+  .masonry {
+    column-count: 2;
+    column-gap: 0;
+  }
+
+  @media only screen and (max-width: 30em) {
+    .masonry {
+      column-count: 1;
+    }
+  }
+</style>
+
+{% paginate blog.articles by 10 %}
+
+<div class="{% if blog.title == 'Yearbook' %} masonry {% endif %}">
+  {% if blog.title == 'Podcast' %}
+  <header class="mb3 tc mt6">
+      {% if current_tags %}
+      <h1 class="sans-serif">
+        {{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
+      </h1>
+      {% else %}
+      <h1 class="sans-serif">{{ blog.title }}S</h1>
+      {% endif %}
+    </header>
+  {% endif %}
+  
+  {% for article in blog.articles %} {% if blog.title == 'Podcast' %}
+  
+
+  <div
+    class="flex flex-column mh3 mb3  tc"
+    itemscope
+    itemtype="http://schema.org/Article"
+  >
+    
+    <h2 class="sans-serif">
+      {{ article.title }}
+    </h2>
+
+    <div class="rte rte--indented-images">
+      {% if article.image %}
+      {{ article | img_url: '640x640' | img_tag: article.title }}
+      {% endif %}
+      <div
+        class="mt2 flex flex-column justify-center center w-33-l w-75-m w-100"
+      >
+        {{ article.content }}
+      </div>
+    </div>
+
+    {% if blog.title == 'Yearbook' %}
+    <p class="action-link">
+      <a href="{{ article.url }}" class="sans-serif f3">
+        More
+        <span
+          class="icon icon-arrow-right action-link__icon"
+          aria-hidden="true"
+        ></span
+      ></a>
+    </p>
+    {% endif %}
+  </div>
+
+  {% elsif blog.title == 'Yearbook' %} {% if article.image %}
+  <div class="relative">
+    <a href="{{ article.url }}" class="article w-50-l w-100">
+      <img
+        class="w-100"
+        src="{{ article.image.src | | img_url: 'master' }}"
+        alt="{{ article.title }}"
+        style="margin-bottom: -0.5rem;"
+      />
+
+      <div
+        class="article-text absolute top-0 right-0 w-100 flex justify-center items-center h-100"
+      >
+        <p class="f1-l f2-m f3 sans-serif red fw7 tc">{{ article.title | upcase }}</p>
+      </div>
+    </a>
+  </div>
+
+  {% endif %} {% elsif blog.title == 'newone' %} {% if article.image %}
+
+  <a href="{{ article.url }}">
+    {{ article | img_url: 'master' | img_tag: article.title }}
+  </a>
+
+  {% endif %} {% endif %} {% unless forloop.last %} {% endunless %} {% endfor %}
+</div>
+{% if paginate.pages > 1 %} {% include 'pagination' %} {% endif %} {%
+endpaginate %}

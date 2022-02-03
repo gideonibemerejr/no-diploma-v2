@@ -1,0 +1,328 @@
+<style>
+/* Landing page CSS */
+
+
+.signup_bullets {
+ 	padding-left:10.5%;
+  	position:relative;
+}
+.signup_bullets_ul {
+	margin-left:0; 
+  	position: relative;
+	z-index: 99;
+}
+.signup_bullets_ul li {
+	list-style:none;
+  	background: url('{{ 'bullet2.jpg' | asset_url }}') 0 1px no-repeat;
+  	padding-left: 27px;
+  	line-height:1.5em;
+  	font-size:22px;
+}
+#landing_email_box {
+    background:#261312;
+  	-webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+  	margin-top:50px;
+  	padding:25px;
+  	text-align:center;
+  	position:relative;
+}
+#landing_email_box input {
+	margin-bottom:0; 
+  	padding:15px;
+}
+#landing_email_box input[type="email"] {
+ 	font-size:19px; 
+}
+#landing_email_box .action_button {
+	font-size:20px;
+  	text-transform:uppercase;
+  	font-weight:900;
+  	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  	width:262px;
+  	height: 56px;
+	margin-left: 5px;
+}
+#email_arrow {
+	position:absolute;
+  	left:-75px;
+  	top:-4px;
+  	z-index:999;
+}
+h3.landing_nostrings {
+	font-family:Georgia, sans-serif;
+  	font-style:italic;
+  	font-size:22px;
+  	border-top:1px solid #ddd;
+  	border-bottom:1px solid #ddd;
+  	padding:8px 0;
+  	text-align:center;
+  	text-transform:none;
+  	font-weight:normal;
+  	letter-spacing:0px;
+  	margin-top: 15px;
+}
+.email_label {
+  display:inline;
+  color:#fff;
+  text-transform:uppercase;
+  font-weight:900;
+  margin-right:8px;
+  font-size:20px;
+  position:relative;
+  top:17px;
+}
+#knife_pic {
+  position:absolute;
+  right:0;
+  top:-20px;
+}
+.landing_box {
+	text-align:center;
+	padding-top:15px;  
+}
+.landing_box h4 {
+	font-weight:light;
+  	font-size:16px;
+  	text-transform:uppercase;
+  	text-align:center;
+  	margin-top:0;
+  	border-bottom:1px solid #ddd;
+  	padding-bottom:7px;
+  	margin-bottom: 7px;
+}
+.landing_box p {
+  	font-style:italic;
+  	font-size:15px;
+  	line-height:1.5em;
+}
+
+.signup_bullets h3 {
+	font-weight:bold;
+  	text-transform:none;
+  	letter-spacing:0px;
+  	font-size:24px;
+  	margin-bottom:15px;
+}
+.landingpage h1 {
+ 	text-align:center;
+  	margin-top:15px;
+  	font-weight:bold;
+  	margin-top:35px;
+}
+.landingpage h2 {
+  	margin-top:10px;
+  	text-align: center;
+	padding-top: 7px !important;
+  	text-transform:uppercase;
+ 	font-size:21px;
+  	margin-bottom:20px;
+}
+.landing_page_container {
+    width:100%;
+    display:block;   
+    clear:both;
+}
+.landing_page_wilderness {
+  background: url('{{ 'Capsule_0.3.jpg' | asset_url }}') top center no-repeat; 
+  background-size: 100% 100%;
+  padding:120px 0;
+  margin-bottom:-15px;
+  width:100%;
+  clear:both;
+}
+.landing_page_wilderness p {
+	text-align:center;
+  	color:#fff;
+  	font-style:italic;
+  	font-size:20px;
+  	padding:10px 50px;
+  	text-shadow: 0px 2px 50px rgba(0, 0, 0, .8);
+  	background: rgba(0,0,0,.5);
+    margin-bottom: 0;
+    line-height: 1.4em;
+}
+
+.one-third.column {
+	width: 30%;
+  	margin: 0 1.5%;
+}
+.column, .columns {
+  float: left;
+  display: inline;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+.column.alpha, .columns.alpha {
+	margin-left: 0;
+}
+.column.omega, .columns.omega {
+	margin-right: 0;
+}
+
+  input.action_button[type="submit"], 
+  input.action_button[type="button"] {
+    background: #D2291E;
+    color: #ffffff;
+    border: 0;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-transition: all 500ms ease 0s;
+    -moz-transition: all 500ms ease 0s;
+    -ms-transition: all 500ms ease 0s;
+    -o-transition: all 500ms ease 0s;
+    transition: all 500ms ease 0s;
+    -webkit-appearance: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  }
+
+  a.action_button.button:hover, 
+  .action_button.button:hover,
+  input.action_button[type="submit"]:hover,
+  input.action_button[type="button"]:hover,
+  .action_button:hover, 
+  input.action_button[type="submit"]:hover, 
+  input.action_button[type="button"]:hover {
+    background: {{ settings.btn_hover_color }};
+    -webkit-transition: all 500ms ease 0s;
+    -moz-transition: all 500ms ease 0s;
+    -ms-transition: all 500ms ease 0s;
+    -o-transition: all 500ms ease 0s;
+    transition: all 500ms ease 0s;
+  }
+  
+  @media only screen and (min-width: 778px) and (max-width: 1026px) {
+    #knife_pic {
+      max-width:40%;
+    }
+    #email_arrow {
+      left: -53px;
+      top: 14px;
+      width: 100px;
+    }
+  }
+  
+  @media only screen and (max-width: 777px) {
+    #knife_pic {
+      position:relative;
+      right:0;
+      top:0;
+      clear:both;
+    }
+    .email_label {
+      top:0;
+      margin-bottom:7px !important;
+    }
+    .email_label,
+    #landing_email_box input {
+      display:block;
+      margin:0 auto 10px;
+      width: 230px;
+      line-height: 20px;
+    }
+    #landing_email_box .action_button {
+      margin:0 auto; 
+    }
+    #email_arrow {
+      left: -56px;
+	  top: 54px;
+	  width: 150px;
+    }
+  }
+  @media only screen and (max-width: 630px) {
+   	.one-third.column,
+    .one-third.column.alpha,
+    .one-third.column.omega {
+      width: 60%;
+      margin: 0 auto;
+      float: none;
+      text-align: center;
+      display: block;
+      clear: both;
+     } 
+  }
+  @media only screen and (max-width: 520px) {
+    #email_arrow {
+      display:none; 
+    }
+  }
+
+/* End Landing Page CSS */
+</style>
+
+<div class="landingpage">
+<div>
+  <h1 class="collection_title">
+    Dear Classmates, 
+     
+  </h1>
+  <h2>
+    Welcome to the NEW curriculum,
+    </div>
+<h2>
+  Whatever it is that you are pursuing at this very moment, whether it’s
+a career with No Diploma or  a career with a Diploma, the important 
+lesson here is to follow YOUR path & staying true to YOUrself. 
+
+A manual to life doesn’t exist, you create & shape your own. Don’t compare your path to others, stop looking for outside approval, stop trying to 
+satisfy your parents or friends, start living for YOU and start fulfilling your own happiness, continue to learn, continue to grow, continue to love, 
+let life be your greatest teacher. 
+  </h2>
+</div>
+
+<div class="landing_page_container">
+    <div class="signup_bullets">
+      <h3></h3>
+      
+      <ul class="signup_bullets_ul">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <img id="knife_pic" src="{{ '' | asset_url }}" />
+    </div><!--signup_bullets-->
+	<div id="landing_email_box">
+      <img id="email_arrow" src="{{ 'orange-arrow.png' | asset_url }}" />
+      
+      <form action="Insert Mailchimp Form URL here" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="contact-form" target="_blank">
+        <label for="email" class="email_label">Your Email:</label>
+        <input type="email" value="" name="EMAIL" class="required email" id="contact_email" placeholder="Enter your email address...">
+        <input type="submit" value="Enroll Now &rarr;" id="sign_up" name="subscribe" id="mc-embedded-subscribe" class="action_button">
+      </form>
+      
+	</div>
+  
+    <h3 class="landing_nostrings">
+      Enroll now & receive important updates,Class announcements & Exclusive previews.
+    </h3>
+  
+  <div class="one-third column alpha landing_box">
+    <img src="{{ 'logo2.png' | asset_url }}" />
+  </div>
+  <div class="one-third column landing_box">
+    <img src="{{ 'logo2.png' | asset_url }}" />
+  </div>
+  <div class="one-third column omega landing_box">
+    <img src="{{ 'logo2.png' | asset_url }}" />
+  </div>      
+  
+</div>
+  
+<div class="landing_page_wilderness">
+    <p></p>
+    <p></p>    
+</div>   
+  
+</div><!--landingpage-->
