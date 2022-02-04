@@ -65,7 +65,7 @@ flex; flex-direction: column; justify-content: space-between; height: 75%; } }
         >
           <a
             href="{{ childlink.url }}"
-            class="drawer-nav__link sans-serif f1 fw7"
+            class="drawer-nav__link  f1 fw7"
             >{{ childlink.title | escape }}</a
           >
         </li>
@@ -76,7 +76,7 @@ flex; flex-direction: column; justify-content: space-between; height: 75%; } }
     <li
       class="drawer-nav__item{% unless template.name == 'index' %}{% if link.active %} drawer-nav__item--active{% endif %}{% endunless %}"
     >
-      <a href="{{ link.url }}" class="drawer-nav__link sans-serif f3 fw7">{{
+      <a href="{{ link.url }}" class="drawer-nav__link  f3 fw7">{{
         link.title | upcase
       }}</a>
     </li>

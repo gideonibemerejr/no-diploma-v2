@@ -36,9 +36,9 @@ display: none; } } {% endstylesheet %}
   itemtype="http://schema.org/Article"
 >
   <header class="section-header">
-    <h1 class="h2 green sans-serif">{{ article.title }}</h1>
+    <h1 class="h2 green ">{{ article.title }}</h1>
     <ul class="list--inline article-meta txt--minor list">
-      <li class="list--inline__separator list pa0 ma0 f4 sans-serif">
+      <li class="list--inline__separator list pa0 ma0 f4 ">
         <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{
           article.published_at | date: format:'month_day_year'
         }}</time>
@@ -47,7 +47,7 @@ display: none; } } {% endstylesheet %}
   </header>
 
   <article
-    class="no-diploma-article flex flex-column w-100 w-75-l sans-serif"
+    class="no-diploma-article flex flex-column w-100 w-75-l "
     itemprop="articleBody"
   >
     {% if article.image and blog.title == 'Podcast' %}
@@ -61,7 +61,7 @@ display: none; } } {% endstylesheet %}
 
   {% if section.settings.social_sharing_blog %}
   <hr class="hr--clear" />
-  <h3 class="h2 sans-serif">
+  <h3 class="h2 ">
     Share this {% if blog.title == 'Podcast' %} Class Discussion {% elsif
     blog.title == 'Yearbook' %} page from the yearbook {% endif %}
   </h3>
@@ -69,7 +69,7 @@ display: none; } } {% endstylesheet %}
   article.url, share_image: article.image %} {% endif %}
 
   <hr class="hr--clear" />
-  <p class="text-center action-link sans-serif">
+  <p class="text-center action-link ">
     <a href="{{ blog.url }}"
       ><span
         class="icon icon-arrow-left action-link__icon"

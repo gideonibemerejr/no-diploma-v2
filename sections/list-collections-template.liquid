@@ -46,7 +46,7 @@
 <div class="grid grid--no-gutters collection-grid">
 {% for collection in collections %}
   {% if collection.image %}
-  <div class="collection-image w-33-l w-50-m w-100 flex flex-column justify-between relative tc sans-serif">
+  <div class="collection-image w-33-l w-50-m w-100 flex flex-column justify-between relative tc ">
     <img  src="{{ collection | img_url: '540x540' }}" alt="{{ collection.image.alt }}" />
     <p style='text-shadow: 1px 1px 1px #000;' class='f3 fw7 white tc ma0'>{{ collection.title | upcase}}</p>
   </div>
