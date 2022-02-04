@@ -36,7 +36,7 @@ display: none; } } {% endstylesheet %}
   itemtype="http://schema.org/Article"
 >
   <header class="section-header">
-    <h1 class="h2 red sans-serif">{{ article.title }}</h1>
+    <h1 class="h2 green sans-serif">{{ article.title }}</h1>
     <ul class="list--inline article-meta txt--minor list">
       <li class="list--inline__separator list pa0 ma0 f4 sans-serif">
         <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{

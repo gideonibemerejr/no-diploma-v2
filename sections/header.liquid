@@ -134,7 +134,7 @@
       <nav class="db-l dn ph2 ph3-ns pv3 pv4-ns">
         {% for link in linklists.main-menu.links %}
         <a
-          class="link {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %} f6 sans-serif fw7 dib mr4"
+          class="link {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %} f6 fw7 dib mr4"
           href="{{ link.url }}"
           title="{{ link.title }}"
           >{{ link.title | upcase }}</a
