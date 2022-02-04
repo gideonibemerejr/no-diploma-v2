@@ -45,6 +45,10 @@ have access to global liquid variables. {% endcomment %}
 <div class="mt5 mt0-l">
   {% for collection in collections %} {% unless collection.handle == 'frontpage'
   %} {% assign collection_count = collection_count | plus:1 %} {% endunless %}
+  {% comment %} {% if forloop.index == 3 %}
+    {% break %}
+  {% endif %} {% endcomment %}
+  
   {% if collection.image %}
   <div class="flex flex-column justify-center items-center vh-75 vh-100-l mb2">
     <a
@@ -74,7 +78,13 @@ have access to global liquid variables. {% endcomment %}
     </a>
   </div>
 
-  {% endif %} {% endfor %}
+  {% endif %} 
+  {{ forloop.index}}
+  {% else %}
+  This collection is empty.
+ 
+{% endfor %}
+
 </div>
 <div class="white">
   {{ content_for_index }}
