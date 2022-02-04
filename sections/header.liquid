@@ -40,6 +40,7 @@
    .site-header {
     background: {% if template.name == "index" %} url('https://cdn.shopify.com/s/files/1/0447/2884/4439/files/header-background.png?v=1643959578') {% else %} 'white' {% endif %};
     background-size: cover;
+    background-position: 45% 0%;
    }
   }
 
@@ -133,7 +134,7 @@
       <nav class="db-l dn ph2 ph3-ns pv3 pv4-ns">
         {% for link in linklists.main-menu.links %}
         <a
-          class="link {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %} f6 sans-serif fw7 dib mr2"
+          class="link {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %} f6 sans-serif fw7 dib mr4"
           href="{{ link.url }}"
           title="{{ link.title }}"
           >{{ link.title | upcase }}</a
@@ -170,7 +171,7 @@
   {% if template.name == 'index'%}
   <div class="w-100 flex-l justify-end-l z-10 mt4 dn"> 
   <div class='mr6'>
-  <video autoplay muted width="450">
+  <video loop autoplay muted width="450">
 
     <source src="/media/cc0-videos/flower.webm"
             type="video/webm">

@@ -15,7 +15,7 @@
 
 {% paginate blog.articles by 10 %}
 
-<div class="{% if blog.title == 'Yearbook' %} masonry {% endif %}">
+<div class="{% if blog.title == 'Yearbook' %}flex flex-wrap-ns flex-row-ns flex-column{% endif %}">
   {% if blog.title == 'Podcast' %}
   <header class="mb3 tc mt6">
       {% if current_tags %}
@@ -66,21 +66,22 @@
   </div>
 
   {% elsif blog.title == 'Yearbook' %} {% if article.image %}
-  <div class="relative">
-    <a href="{{ article.url }}" class="article w-50-l w-100">
+  <div class="flex flex-column justify-start items-center w-50-ns w-100 pa4">
+    <div class="w-100">
+    <a href="{{ article.url }}" class="w-75">
       <img
         class="w-100"
         src="{{ article.image.src | | img_url: 'master' }}"
         alt="{{ article.title }}"
         style="margin-bottom: -0.5rem;"
       />
-
-      <div
-        class="article-text absolute top-0 right-0 w-100 flex justify-center items-center h-100"
-      >
-        <p class="f1-l f2-m f3 sans-serif red fw7 tc">{{ article.title | upcase }}</p>
-      </div>
     </a>
+  </div>
+    <div
+      class="w-100 flex justify-center items-center"
+    >
+      <p class="f1-l f2-m f3 sans-serif green fw7 tc">{{ article.title | upcase }}</p>
+    </div>
   </div>
 
   {% endif %} {% elsif blog.title == 'newone' %} {% if article.image %}
