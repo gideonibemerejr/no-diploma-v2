@@ -7,25 +7,53 @@
     max-height: 80px;
     margin: .5rem auto;
   }
+
   @media screen and (max-width: 749px) {
     .site-header__logo img {
       max-width: 100%;
     }
   }
 
+  .site-header {
+    background: url({% if template.name == "index" %} 'https://cdn.shopify.com/s/files/1/0447/2884/4439/files/header-background-mobile.png?v=1643959578' {% else %} 'white' {% endif %});
+    background-size: cover;
+    background-position: 45% 0%;
+    padding-top: 20px;
 
+    width: 100vw;
 
+    height: {% if template.name == "index" %} 100vh {% else %} '80px' {% endif %};
+  }
+  .invert {
+    filter: {% if template.name == "index" %} grayscale(1) invert(1) {% else %} '' {% endif %};
+  }
   .site-header__inner {
     background: transparent;
   }
 
-  .site-header-wrapper {
-    position: fixed;
-    z-index: 20;
-  }
+
   .template-index .site-header-container {
     display: block;
   }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+   
+   .site-header {
+    background: {% if template.name == "index" %} url('https://cdn.shopify.com/s/files/1/0447/2884/4439/files/header-background.png?v=1643959578') {% else %} 'white' {% endif %};
+    background-size: cover;
+   }
+  }
+
+  @media screen and (min-width: 992px) {
+    .site-header {
+      background: {% if template.name == "index" %} url('https://cdn.shopify.com/s/files/1/0447/2884/4439/files/header-background.png?v=1643959578') {% else %} 'white' {% endif %};
+      background-size: cover;
+      background-position: 25% 25%;
+    }
+  }
+
+  
+ 
+  
 </style>
 
 <header
@@ -34,34 +62,10 @@
   data-section-id="{{ section.id }}"
   data-section-type="header-section"
 >
-  <div class="grid grid--no-gutters grid--table site-header__inner">
-    <div class="grid__item one-third">
-      <nav class="db-l dn ph2 ph3-ns pv3 pv4-ns">
-        {% for link in linklists.main-menu.links %}
-        <a
-          class="link {% if template.name == 'blog' and blog.title == 'Yearbook' %} white {% else %} black {% endif %} hover-red f6 sans-serif fw7 dib mr2"
-          href="{{ link.url }}"
-          title="{{ link.title }}"
-          >{{ link.title | upcase }}</a
-        >
-        {% endfor %}
-      </nav>
-      <button
-        type="button"
-        class="dn-l site-header__link text-link site-header__toggle-nav js-drawer-open-left"
-      >
-        <span
-          class="icon icon-hamburger {% if template.name == 'blog' and blog.title == 'Yearbook' %} white {% else %} black {% endif %}"
-          aria-hidden="true"
-        ></span>
-        <span class="icon__fallback-text">{{
-          'layout.navigation.menu' | t
-        }}</span>
-      </button>
-    </div>
-    <div class="grid__item one-third">
+  <div class="flex justify-between items-center site-header__inner w-100 lausanne">
+    <div class="w-15-l flex justify-start items-center mr4-l h-100">
       <h1
-        class="site-header__logo"
+        class="site-header__logo dn flex-l justify-start w-100 lausanne"
         itemscope
         itemtype="http://schema.org/Organization"
       >
@@ -70,7 +74,7 @@
           {% capture image_size %}{{ section.settings.logo_width | escape }}x{%
           endcapture %}
           <img
-            class="site-header__logo-image"
+            class="site-header__logo-image invert"
             src="{{ section.settings.logo | img_url: image_size }}"
             srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
             alt="{{ shop.name }}"
@@ -80,21 +84,71 @@
         {% else %}
         <a
           href="/"
-          class="site-header__link site-header__logo-link"
+          class="site-header__link site-header__logo-link lausanne"
           itemprop="url"
           >{{ shop.name }}</a
         >
         {% endif %}
       </h1>
-    </div>
-
-    <div class="grid__item one-third text-right">
-      <a
-        href="/search"
-        class="site-header__link site-header__search js-drawer-open-top"
+      <button
+        type="button"
+        class="dn-l site-header__link text-link site-header__toggle-nav js-drawer-open-left"
       >
         <span
-          class="icon icon-search hover-red {% if template.name == 'blog' and blog.title == 'Yearbook' %} white {% else %} black {% endif %}"
+          class="icon icon-hamburger {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %}"
+          aria-hidden="true"
+        ></span>
+        <span class="icon__fallback-text">{{
+          'layout.navigation.menu' | t
+        }}</span>
+      </button>
+    </div>
+    <div class="w-60-l flex justify-center justify-start-l items-center mr4-l h-100">
+      <h1
+        class="site-header__logo flex justify-center items-center  dn-l lausanne"
+        itemscope
+        itemtype="http://schema.org/Organization"
+      >
+        {% if section.settings.logo != blank %}
+        <a href="/" itemprop="url" class="site-header__logo-link text-center">
+          {% capture image_size %}{{ section.settings.logo_width | escape }}x{%
+          endcapture %}
+          <img
+            class="site-header__logo-image invert"
+            src="{{ section.settings.logo | img_url: image_size }}"
+            srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+            alt="{{ shop.name }}"
+            itemprop="logo"
+          />
+        </a>
+        {% else %}
+        <a
+          href="/"
+          class="site-header__link site-header__logo-link lausanne"
+          itemprop="url"
+          >{{ shop.name }}</a
+        >
+        {% endif %}
+      </h1>
+      <nav class="db-l dn ph2 ph3-ns pv3 pv4-ns">
+        {% for link in linklists.main-menu.links %}
+        <a
+          class="link {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %} f6 sans-serif fw7 dib mr2"
+          href="{{ link.url }}"
+          title="{{ link.title }}"
+          >{{ link.title | upcase }}</a
+        >
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="w-25-l flex justify-end item-center text-right h-100">
+      <a
+        href="/search"
+        class="site-header__link site-header__search js-drawer-open-top flex flex-column items-center justify-center"
+      >
+        <span
+          class="dn db-ns icon icon-search {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %}"
           aria-hidden="true"
         ></span>
         <span class="icon__fallback-text">{{
@@ -103,16 +157,32 @@
       </a>
       <a
         href="/cart"
-        class="site-header__link site-header__cart cart-link{% if settings.cart_type == 'drawer' %} js-drawer-open-right{% endif %}{% if cart.item_count > 0 %} cart-bubble--visible{% endif %}"
+        class=" flex flex-column items-center justify-center site-header__link site-header__cart cart-link{% if settings.cart_type == 'drawer' %} js-drawer-open-right{% endif %}{% if cart.item_count > 0 %} cart-bubble--visible{% endif %}"
       >
         <span
-          class="icon icon-cart hover-red {% if template.name == 'blog' and blog.title == 'Yearbook' %} white {% else %} black {% endif %}"
+          class="icon icon-cart {% if template.name == "index" %} white  hover-black {% else %} black hover-green {% endif %}"
           aria-hidden="true"
         ></span>
         <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
       </a>
     </div>
   </div>
+  {% if template.name == 'index'%}
+  <div class="w-100 flex-l justify-end-l z-10 mt4 dn"> 
+  <div class='mr6'>
+  <video autoplay muted width="450">
+
+    <source src="/media/cc0-videos/flower.webm"
+            type="video/webm">
+
+    <source src="https://nodiploma-uploads.s3.amazonaws.com/KOSEXPORTFINAL.mp4"
+            type="video/mp4">
+
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+</div>
+  </div>
+  {% endif %}
 </header>
 
 {% schema %} { "name": "Header", "class": "header-section", "settings": [{

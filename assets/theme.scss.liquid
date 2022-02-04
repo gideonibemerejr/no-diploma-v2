@@ -22,6 +22,12 @@
   @return $number * 1#{$units};
 }
 
+@font-face {
+  font-family: 'Lausanne';
+  src: url('{{ "Lausanne-Regular.woff" | asset_url }}') format("woff");
+  font-style: normal;
+}
+
 
 
 .bg-home { 
@@ -168,6 +174,9 @@ $gutter-site: 20px;
 $gutter-heading: 30px;
 
 /*================ #Typography Variables ================*/
+
+
+
 {% if settings.type_base_family contains 'Google' %}
   {% assign type_base_parts = settings.type_base_family | split: '_' %}
   {% assign type_base_name = type_base_parts[1] %}
@@ -228,7 +237,7 @@ $radius: 2px;
 $svg-action-bar: '{{ "action-bar.svg.liquid" | asset_url }}';
 
 /*================ #Site Header ================*/
-$height-site-header: 65px;
+$height-site-header: 80px;
 $transition-site-header: top 0.15s cubic-bezier(0.2, 0.3, 0.25, 0.9);
 
 /*================ #Forms ================*/
@@ -1402,7 +1411,7 @@ label[for] {
 }
 
 @mixin header-font-stack {
-  font-family: $font-stack-header;
+  font-family: 'Laussane', sans-serif;
   font-weight: $font-weight-header;
   text-rendering: optimizeLegibility;
   {% if settings.type_header_transform %}
@@ -2593,6 +2602,7 @@ textarea {
 }
 
 /*================ Hero header ================*/
+
 .hero__header {
   position: absolute;
   bottom: 0;
@@ -2916,7 +2926,7 @@ $slick-opacity-not-active: 0.25;
 .site-header__inner {
   position: relative;
   height: $height-site-header;
-  padding: 0 ($gutter-site / 2);
+  padding: 0px 20px 0px;
   background-color: $color-navigation-bg;
   z-index: $z-index-site-header;
 }
@@ -2943,6 +2953,7 @@ $slick-opacity-not-active: 0.25;
 .site-header__logo {
   //remove default margin when this is an <h1> tag
   margin: 0;
+  min-height: 80px;
 
   img {
     max-height: $height-site-header;
@@ -7373,6 +7384,9 @@ code,
 .w-10 {
   width: 10%;
 }
+.w-15 {
+  width: 15%;
+}
 .w-20 {
   width: 20%;
 }
@@ -7408,6 +7422,9 @@ code,
 }
 .w-90 {
   width: 90%;
+}
+.laussane {
+  font-family: 'Lausanne', sans-serif !important;
 }
 .w-100 {
   width: 100%;

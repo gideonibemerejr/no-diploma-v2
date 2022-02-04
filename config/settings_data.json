@@ -25,7 +25,7 @@
 		"type_button_base_size": "15px",
 		"type_header_transform": true,
 		"type_header_spacing": "0.05em",
-		"type_base_family": "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
+		"type_base_family": "'Lausanne', sans-serif",
 		"type_base_size": "17px",
 		"cart_type": "drawer",
 		"cart_notes_enable": false,
@@ -79,8 +79,9 @@
 			"header": {
 				"type": "header",
 				"settings": {
-					"logo": "shopify://shop_images/ND_Red_Logo_flag.png",
-					"logo_width": "300"
+					"logo": "shopify://shop_images/logo.png",
+					"logo_width": "300",
+					"header_background_image": "shopify://shop_images/header-background.png"
 				}
 			},
 			"slideshow": {
