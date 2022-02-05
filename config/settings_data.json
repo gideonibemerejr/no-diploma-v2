@@ -11,7 +11,7 @@
 		"color_button_text": "#000000",
 		"color_sale_badge": "#000000",
 		"color_borders": "#eeeeee",
-		"color_nav_bg": "#e90000",
+		"color_nav_bg": "transparent",
 		"color_nav_text": "#000000",
 		"color_action_bar_bg": "#000000",
 		"color_action_bar_text": "#e90000",
