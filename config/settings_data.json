@@ -502,7 +502,8 @@
 				"footer": {
 					"type": "footer",
 					"settings": {
-						"footer_link_list": "footer"
+						"footer_link_list": "footer",
+						"logo": "shopify://shop_images/logo.png"
 					}
 				},
 				"collection-template": {

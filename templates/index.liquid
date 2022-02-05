@@ -43,8 +43,8 @@ have access to global liquid variables. {% endcomment %}
 </style>
 {% assign slider_enabled = true %} {% assign collection_count = 0 %}
 <div>
-  <section class="flex flex-row-l justify-around pa4 mb4 w-100 white" style="background: #00a652;">
-  <article class='w-60-ns w-100'>
+  <section class="flex flex-row-l justify-around pa4 w-100 white" style="background: #00a652;">
+  <article class='w-60-l w-100 flex flex-column justify-center'>
   <h2 class="f2 fw7 white">Thesis</h2>
   <h3 class="f4 fw4 white i">Knowledge of Self</h3>
     <p class="f4">
@@ -52,8 +52,8 @@ have access to global liquid variables. {% endcomment %}
       ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Elit sed do eiusmod. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
     </p>
   </article>
-  <article class="w-20-ns dn flex-ns flex-column-ns justify-center items-center" style="margin-top: -1rem;">
-    <img class="w-100 grow"
+  <article class="w-20-l dn flex-l flex-column-l justify-center items-center" style="margin-top: -1rem;">
+    <img class="w-100"
         src="https://cdn.shopify.com/s/files/1/0447/2884/4439/files/unnamed.gif?v=1643968608" />
   </article>
   </section>
@@ -64,7 +64,7 @@ have access to global liquid variables. {% endcomment %}
   {% endif %}
   
   {% if collection.image %}
-  <div class="flex flex-column {% if forloop.index == 2 %} flex-row-reverse-ns {% else %} flex-row-ns {% endif %} justify-center items-center mv2 ">
+  <div class="flex flex-column {% if forloop.index == 2 %} flex-row-reverse-ns {% else %} flex-row-ns {% endif %} justify-center items-center w-100">
     <div class="flex flex-column justify-center items-center w-50-ns w-100">
     <p
       style="
@@ -82,13 +82,13 @@ have access to global liquid variables. {% endcomment %}
       <p class="ma0 tc fw6 f6 tracked w-100 underline">SHOP COLLECTION</p>
     </a>
   </div>
-  <div class="mb4 w-50-ns w-100 ">
+  <div class="mb4 mb0-ns w-50-ns w-100">
     <a
       class=" homepage-link db w-100"
       href="/collections/{{ collection.handle }}"
     >
       <img
-        class="w-100 grow"
+        class="w-100"
         src="{{ collection.image | img_url: 'master' }} "
       />
     </a>

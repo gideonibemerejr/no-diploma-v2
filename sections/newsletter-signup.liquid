@@ -1,6 +1,18 @@
-<div class="newsletter text-center" data-section-id="{{ section.id }}" data-section-type="newsletter-signup-section">
+<style>
+  .index-section.shopify-section:last-of-type {
+    margin-bottom: 0px;
+    padding-bottom: 60px;
+    background: #eee;
+}
+.index-section {
+    padding-top: 60px;
+    margin-top: 0px;
+}
+</style>
+
+<div class="pt4 bg-light-gray newsletter text-center" data-section-id="{{ section.id }}" data-section-type="newsletter-signup-section">
   {% unless section.settings.heading == blank %}
-    <h2 {% if section.settings.subheading == blank %}class="section-title white  f2"{% endif %}>{{ section.settings.heading | escape }}</h2>
+    <h2 {% if section.settings.subheading == blank %}class="section-title black  f2"{% endif %}>{{ section.settings.heading | escape }}</h2>
   {% endunless %}
   {% unless section.settings.subheading == blank %}
     <p>{{ section.settings.subheading | escape }}</p>
